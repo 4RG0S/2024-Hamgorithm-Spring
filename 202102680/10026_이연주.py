@@ -26,7 +26,6 @@ def bfs_first(a,b, color):
                 visited[x][y] = True
                 dq.append([x,y])
     return
-
 def bfs_second(a,b,color):
     dq = deque()
     dq.append([a,b])
