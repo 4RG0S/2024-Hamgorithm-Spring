@@ -4,10 +4,12 @@ minus = []
 result = 0
 for _ in range(N):
     get_num = int(input())
-    if get_num > 0:
+    if get_num > 1:
         plus.append(get_num)
     elif get_num <= 0:
         minus.append(get_num)
+    else:
+        result += 1
     
 plus.sort(reverse=True)
 minus.sort()
