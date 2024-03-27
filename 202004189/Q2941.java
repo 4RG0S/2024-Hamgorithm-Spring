@@ -1,7 +1,7 @@
 import java.util.*;
 import java.io.*;
 
-public class 2941_최용태 {
+public class Q2941 {
     static int ptr = 0;
     public static void main(String[] args) throws IOException {
         HashSet<String> dict =initDictionary();
