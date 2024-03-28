@@ -24,4 +24,4 @@ ans = [0]*(n+1)
 for i in range(m,n+1):
     ans[i]=max_[i]-min_[i-m]
 
-print(max(ans[1:]))
+print(max(ans))
