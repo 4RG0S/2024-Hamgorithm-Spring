@@ -1,0 +1,25 @@
+#include <stdio.h>
+
+int main() {
+    int n;
+    scanf("%d", &n);
+
+    for (int i = 1; i <= n; i++) {
+        int space = n - i;
+
+        // 공백 출력
+        for (int j = 0; j < space; j++) {
+            printf(" ");
+        }
+
+        // 별 출력
+        for (int k = 0; k < i; k++) {
+            printf("*");
+        }
+
+        // 줄 바꿈
+        printf("\n");
+    }
+
+    return 0;
+}
