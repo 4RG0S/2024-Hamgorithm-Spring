@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+int main() {
+    int N;
+    scanf("%d", &N);
+
+    int *scores = (int *)malloc(N * sizeof(int));
+    if (scores == NULL) {
+        fprintf(stderr, "메모리 할당 오류\n");
+        return 1;
+    }
+
+    int max_score = 0;
+
+    for (int i = 0; i < N; i++) {
+        scanf("%d", &scores[i]);
+        if (scores[i] > max_score) {
+            max_score = scores[i];
+        }
+    }
+
+    double sum = 0;
+    for (int i = 0; i < N; i++) {
+        sum += ((double)scores[i] / max_score) * 100;
+    }
+
+    printf("%.6lf\n", sum / N);
+
+    free(scores); // 동적으로 할당한 메모리 해제
+
+    return 0;
+}
+

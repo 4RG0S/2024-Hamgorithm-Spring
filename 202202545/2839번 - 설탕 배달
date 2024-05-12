@@ -1,0 +1,30 @@
+#include <stdio.h>
+
+int main() {
+    int N;
+    scanf("%d", &N);
+
+    int bag5 = N / 5; 
+    int remainder = N % 5; 
+
+    int bag3 = 0;
+
+    if (remainder != 0) {
+        while (bag5 >= 0) {
+            if (remainder % 3 == 0) {
+                bag3 = remainder / 3;
+                break;
+            }
+            bag5--;
+            remainder += 5;
+        }
+    }
+
+    if (bag5 < 0) {
+        printf("-1\n");
+    } else {
+        printf("%d\n", bag5 + bag3);
+    }
+
+    return 0;
+}
