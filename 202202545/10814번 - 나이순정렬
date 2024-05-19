@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// 회원 구조체 정의
+typedef struct {
+    int age;
+    char name[101];
+    int order;  // 가입 순서를 저장하는 필드
+} Member;
+
+int compare(const void *a, const void *b) {
+    Member *memberA = (Member *)a;
+    Member *memberB = (Member *)b;
+    
+    if (memberA->age != memberB->age) {
+        return memberA->age - memberB->age;  // 나이 오름차순 정렬
+    } else {
+        return memberA->order - memberB->order;  // 가입 순서 오름차순 정렬
+    }
+}
+
+int main() {
+    int N;
+    scanf("%d", &N);  // 회원의 수 입력
+
+    Member *members = (Member *)malloc(N * sizeof(Member));  // 동적 메모리 할당
+
+    for (int i = 0; i < N; i++) {
+        scanf("%d %s", &members[i].age, members[i].name);
+        members[i].order = i;  // 가입 순서 저장
+    }
+
+    qsort(members, N, sizeof(Member), compare);
+
+    for (int i = 0; i < N; i++) {
+        printf("%d %s\n", members[i].age, members[i].name);
+    }
+
+    free(members);
+
+    return 0;
+}
