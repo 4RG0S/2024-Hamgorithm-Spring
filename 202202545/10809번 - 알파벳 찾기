@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char word[101];
+    int positions[26];
+
+    scanf("%s", word);
+
+    // 모든 알파벳의 등장 위치 -1로 초기화
+    memset(positions, -1, sizeof(positions));
+
+    for (int i = 0; word[i] != '\0'; i++) {
+        int index = word[i] - 'a'; // 알파벳 인덱스 계산
+        if (positions[index] == -1) {
+            positions[index] = i;
+        }
+    }
+
+    // 결과 출력
+    for (int i = 0; i < 26; i++) {
+        printf("%d ", positions[i]);
+    }
+
+    return 0;
+}

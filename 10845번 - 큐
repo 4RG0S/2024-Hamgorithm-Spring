@@ -1,0 +1,80 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+#define MAX_QUEUE_SIZE 10000
+
+typedef struct {
+    int data[MAX_QUEUE_SIZE];
+    int front;
+    int back;
+} Queue;
+
+void initQueue(Queue *q) {
+    q->front = 0;
+    q->back = 0;
+}
+
+int isEmpty(Queue *q) {
+    return q->front == q->back;
+}
+
+int size(Queue *q) {
+    return q->back - q->front;
+}
+
+void push(Queue *q, int value) {
+    q->data[q->back++] = value;
+}
+
+int pop(Queue *q) {
+    if (isEmpty(q)) {
+        return -1;
+    }
+    return q->data[q->front++];
+}
+
+int front(Queue *q) {
+    if (isEmpty(q)) {
+        return -1;
+    }
+    return q->data[q->front];
+}
+
+int back(Queue *q) {
+    if (isEmpty(q)) {
+        return -1;
+    }
+    return q->data[q->back - 1];
+}
+
+int main() {
+    int n;
+    scanf("%d", &n);
+
+    Queue q;
+    initQueue(&q);
+
+    for (int i = 0; i < n; i++) {
+        char command[6];
+        scanf("%s", command);
+
+        if (strcmp(command, "push") == 0) {
+            int value;
+            scanf("%d", &value);
+            push(&q, value);
+        } else if (strcmp(command, "pop") == 0) {
+            printf("%d\n", pop(&q));
+        } else if (strcmp(command, "size") == 0) {
+            printf("%d\n", size(&q));
+        } else if (strcmp(command, "empty") == 0) {
+            printf("%d\n", isEmpty(&q));
+        } else if (strcmp(command, "front") == 0) {
+            printf("%d\n", front(&q));
+        } else if (strcmp(command, "back") == 0) {
+            printf("%d\n", back(&q));
+        }
+    }
+
+    return 0;
+}

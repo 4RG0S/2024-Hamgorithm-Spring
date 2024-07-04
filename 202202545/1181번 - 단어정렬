@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+struct Word {
+    char str[51];
+};
+
+// 비교
+int compare(const void *a, const void *b) {
+    struct Word *wordA = (struct Word *)a;
+    struct Word *wordB = (struct Word *)b;
+
+    // 길이가 다르면 길이 오름차순 정렬
+    if (strlen(wordA->str) != strlen(wordB->str)) {
+        return strlen(wordA->str) - strlen(wordB->str);
+    } else { // 길이가 같으면 사전 순으로 정렬
+        return strcmp(wordA->str, wordB->str);
+    }
+}
+
+int main() {
+    int N;
+    scanf("%d", &N);
+
+    struct Word words[N];
+
+    for (int i = 0; i < N; i++) {
+        scanf("%s", words[i].str);
+    }
+
+    qsort(words, N, sizeof(struct Word), compare);
+
+    printf("%s\n", words[0].str);
+    for (int i = 1; i < N; i++) {
+        if (strcmp(words[i].str, words[i - 1].str) != 0) {
+            printf("%s\n", words[i].str);
+        }
+    }
+
+    return 0;
+}

@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+    int count[26] = {0};
+    char word[1000001];
+    char most_used = '?';
+    int max_count = 0;
+
+    scanf("%s", word);
+    for (int i = 0; word[i] != '\0'; i++) {
+        if (isalpha(word[i])) {
+            int index = tolower(word[i]) - 'a';
+            count[index]++;
+            if (count[index] > max_count) {
+                max_count = count[index];
+                most_used = toupper(word[i]);
+            } else if (count[index] == max_count) {
+                most_used = '?';
+            }
+        }
+    }
+
+    printf("%c\n", most_used);
+
+    return 0;
+}
